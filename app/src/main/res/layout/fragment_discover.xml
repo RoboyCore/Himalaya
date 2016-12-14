@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="mobi.xiaowu.himalaya.ui.fragment.discover.DiscoverFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/discover_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <include layout="@layout/fragment_discover_tool_bar"/>
+    </android.support.v7.widget.Toolbar>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/discover_tab"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/discover_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+              tools:showIn="@layout/fragment_discover">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/title_logo"/>
+    <ImageView
+        android:id="@+id/discover_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:src="@mipmap/search_flag_image"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+    />
+
+</RelativeLayout>

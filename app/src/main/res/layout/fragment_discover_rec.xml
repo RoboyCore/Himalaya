@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/discover_rec_vp"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"/>
+    <LinearLayout
+        android:id="@+id/discover_rec_vp_dot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/discover_rec_vp"
+        android:orientation="horizontal"/>
+
+
+
+</RelativeLayout>

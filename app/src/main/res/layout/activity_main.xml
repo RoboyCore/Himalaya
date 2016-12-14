@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="mobi.xiaowu.himalaya.MainActivity">
-
-    <TextView
+    <FrameLayout
+        android:id="@+id/main_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+    <RadioGroup
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/main_rb_01"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/main_rb4_selector"
+            android:text="发现"/>
+        <RadioButton
+            android:id="@+id/main_rb_02"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/main_rb1_selector"
+            android:text="订阅听"/>
+        <RadioButton
+            android:id="@+id/main_rb_03"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/album_play"
+        android:text=""/>
+        <RadioButton
+            android:id="@+id/main_rb_04"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/main_rb2_selector"
+            android:text="下载听"/>
+        <RadioButton
+            android:id="@+id/main_rb_05"
+            style="@style/main_rb_style"
+            android:drawableTop="@drawable/main_rb5_selector"
+            android:text="我的"/>
+    </RadioGroup>
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+    android:src="@drawable/play_icon_default"
+        android:elevation="5dp"
+    android:layout_gravity="bottom|center_horizontal"/>
+
+</FrameLayout>
