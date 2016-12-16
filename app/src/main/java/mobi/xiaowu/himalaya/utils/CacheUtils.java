@@ -3,11 +3,15 @@ package mobi.xiaowu.himalaya.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by lx on 2016/12/9.
@@ -15,10 +19,13 @@ import java.lang.ref.SoftReference;
  */
 
 public class CacheUtils {
+    //添加缓存回收引用到引用队列
+    private ReferenceQueue<LruCache<String, Bitmap>> rq;
     //用于内存缓存
     private SoftReference<LruCache<String, Bitmap>> sfCache;
     //用于文件缓存的目录
     private String dirFilePath;
+    private  LruCache<String,Bitmap> lru;
     /**只使用内存缓存-LruCache*/
     public CacheUtils(int size)
     {
@@ -32,6 +39,7 @@ public class CacheUtils {
     /**同时使用内存缓存和文件缓存*/
     public CacheUtils(int size,String dirPath)
     {
+        rq=new ReferenceQueue();
         //内存缓存
         if(size>0)
         {
@@ -41,7 +49,9 @@ public class CacheUtils {
                         protected int sizeOf(String key, Bitmap value) {
                             return value.getByteCount();
                         }
-                    });
+                    },rq);
+            lru=sfCache.get();
+            Log.e("TS", "CacheUtils: "+lru);
         }
         //文件存储
         if(dirPath!=null)
@@ -63,7 +73,7 @@ public class CacheUtils {
         if(sfCache!=null)
         {
             //从内存中获取数据
-            bitmap=sfCache.get().get(imgUrl);
+            lru.get(imgUrl);
             //验证是否有文件存储且内存存储没有改对象
             if(dirFilePath!=null && bitmap==null)
             {
@@ -100,7 +110,8 @@ public class CacheUtils {
     {
         if(sfCache!=null)//内存存储
         {
-            sfCache.get().put(imgUrl,bitmap);
+            //LruCache<String,Bitmap> lru=sfCache.get();
+            lru.put(imgUrl,bitmap);
             if(isSaveFile)//是否需要进行文件存储
             {
                 try {

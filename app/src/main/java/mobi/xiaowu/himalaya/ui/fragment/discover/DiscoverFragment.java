@@ -22,8 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.R;
 import mobi.xiaowu.himalaya.adapter.FragmentPagerAdapter;
-import mobi.xiaowu.himalaya.api.DiscoverUrl;
-import mobi.xiaowu.himalaya.model.DiscoverTitle;
+import mobi.xiaowu.himalaya.model.main.DiscoverTitle;
 import mobi.xiaowu.himalaya.ui.activity.SearchActivity;
 import mobi.xiaowu.himalaya.ui.fragment.BaseFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.anchor.DiscoverAnchorFragment;
@@ -31,7 +30,6 @@ import mobi.xiaowu.himalaya.ui.fragment.discover.broadcast.DiscoverBroadFragment
 import mobi.xiaowu.himalaya.ui.fragment.discover.hotlist.DiscoverListFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.sort.DiscoverSortFragment;
-import mobi.xiaowu.himalaya.utils.JsonAsyncTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,20 +98,15 @@ public class DiscoverFragment extends BaseFragment implements View.OnClickListen
         tab.setupWithViewPager(vp);
         tab.setSelectedTabIndicatorColor(Color.RED);
         tab.setTabTextColors(Color.BLACK,Color.RED);
-        tab.setSelectedTabIndicatorHeight(2);
+        tab.setSelectedTabIndicatorHeight(3);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        loadData();
     }
 
-    private void loadData() {
-
-
-    }
 
     @Override
     public void onClick(View v) {

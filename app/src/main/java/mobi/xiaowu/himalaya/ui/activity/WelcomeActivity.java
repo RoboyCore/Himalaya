@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.MainActivity;
 import mobi.xiaowu.himalaya.R;
 import mobi.xiaowu.himalaya.api.MainUrl;
-import mobi.xiaowu.himalaya.model.Ads;
+import mobi.xiaowu.himalaya.model.main.Ads;
 import mobi.xiaowu.himalaya.utils.ImgAsync;
 import mobi.xiaowu.himalaya.utils.JsonAsyncTask;
 
@@ -33,6 +33,7 @@ public class WelcomeActivity extends AppCompatActivity implements JsonAsyncTask.
     private ScheduledThreadPoolExecutor mExecutor;
     private int AppCount;
     private Ads.Ad mAd;
+    private  boolean isAds;//是否开启广告
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,11 @@ public class WelcomeActivity extends AppCompatActivity implements JsonAsyncTask.
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.what == 0x110) {
-                    startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-                    finish();
+                    if (!isAds) {
+                        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 return false;
             }
@@ -91,11 +95,14 @@ public class WelcomeActivity extends AppCompatActivity implements JsonAsyncTask.
     }
 
     public void click(View view) {
+        isAds = true;
         if (mAd != null) {
             String link = mAd.getLink();
-            Intent intent = new Intent(this, WebViewActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("link",link);
+            intent.putExtra("loadAds",true);
             startActivity(intent);
+            finish();
         }
     }
 }

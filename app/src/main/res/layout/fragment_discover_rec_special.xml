@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+    <include
+        android:id="@+id/layout_lv_title"
+        layout="@layout/include_lv_title"/>
+    <ImageView
+        android:id="@+id/rec_item_content_iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        android:layout_below="@id/layout_lv_title"
+        android:src="@mipmap/image_default"/>
+</RelativeLayout>

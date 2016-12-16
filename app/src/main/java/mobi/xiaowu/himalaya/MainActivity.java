@@ -1,5 +1,7 @@
 package mobi.xiaowu.himalaya;
 
+import android.content.Intent;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import mobi.xiaowu.himalaya.ui.activity.WebViewActivity;
 import mobi.xiaowu.himalaya.ui.fragment.discover.DiscoverFragment;
 import mobi.xiaowu.himalaya.ui.fragment.downlisten.DownListenFragment;
 import mobi.xiaowu.himalaya.ui.fragment.my.MyFragment;
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @BindView(R.id.main_rg)
     public RadioGroup rg;
     private FragmentManager fm;
+    private long time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tx.commit();
         rg.setOnCheckedChangeListener(this);
         rg.check(0);
+        boolean loadAds = getIntent().getBooleanExtra("loadAds", false);
+        if (loadAds) {
+            Intent intent = new Intent(this, WebViewActivity.class);
+            intent.putExtra("link",getIntent().getStringExtra("link"));
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -57,5 +67,15 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 break;
         }
         tx.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        long curr = System.currentTimeMillis();
+        if (curr - time < 3000) {
+            super.onBackPressed();
+        }
+        Toast.makeText(this, "再按一下退出", Toast.LENGTH_SHORT).show();
+        time = curr;
     }
 }

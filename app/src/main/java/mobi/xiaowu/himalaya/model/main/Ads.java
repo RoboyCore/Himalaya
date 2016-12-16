@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.model;
+package mobi.xiaowu.himalaya.model.main;
 
 import java.util.List;
 
