@@ -49,6 +49,10 @@ public class MyViewPager extends ViewPager {
     //作为父控件，给子控件是否滚动
     @Override
     protected boolean canScroll(View v, boolean checkV, int dx, int x, int y) {
+        if (v != this && v instanceof ViewPager) {
+
+            return true;
+        }
         return super.canScroll(v, checkV, dx, x, y);
     }
 }

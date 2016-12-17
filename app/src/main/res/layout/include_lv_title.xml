@@ -5,12 +5,14 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
+              android:layout_marginTop="15dp"
        tools:showIn="@layout/fragment_discover_rec_editor">
 
     <ImageView
         android:id="@+id/rec_item_title_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:src="@mipmap/title_tag"
     />
     <TextView
@@ -24,8 +26,10 @@
         android:id="@+id/rec_item_more_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
         android:gravity="right"
-        android:text="更多 &gt;"
+        android:drawableRight="@drawable/ic_more_selector"
+        android:text="更多"
         android:textColor="@android:color/darker_gray"
     />
 </LinearLayout>

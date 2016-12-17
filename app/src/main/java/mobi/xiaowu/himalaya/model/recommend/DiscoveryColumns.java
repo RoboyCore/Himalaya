@@ -1,12 +1,15 @@
 package mobi.xiaowu.himalaya.model.recommend;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by xiaowu on 2016/12/16.
  */
 
-public class DiscoveryColumns {
+public class DiscoveryColumns implements Parcelable{
     /**
      * ret : 0
      * title : 发现新奇
@@ -18,6 +21,38 @@ public class DiscoveryColumns {
     private String title;
     private int locationInHotRecommend;
     private List<DiscoverColumn> list;
+
+    protected DiscoveryColumns(Parcel in) {
+        ret = in.readInt();
+        title = in.readString();
+        locationInHotRecommend = in.readInt();
+        list = in.createTypedArrayList(DiscoverColumn.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(ret);
+        dest.writeString(title);
+        dest.writeInt(locationInHotRecommend);
+        dest.writeTypedList(list);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<DiscoveryColumns> CREATOR = new Creator<DiscoveryColumns>() {
+        @Override
+        public DiscoveryColumns createFromParcel(Parcel in) {
+            return new DiscoveryColumns(in);
+        }
+
+        @Override
+        public DiscoveryColumns[] newArray(int size) {
+            return new DiscoveryColumns[size];
+        }
+    };
 
     public int getRet() {
         return ret;
@@ -51,7 +86,7 @@ public class DiscoveryColumns {
         this.list = list;
     }
 
-    public static class DiscoverColumn {
+    public static class DiscoverColumn implements Parcelable{
         /**
          * id : 66
          * title : 听资讯
@@ -79,6 +114,33 @@ public class DiscoveryColumns {
         private int contentUpdatedAt;
         private PropertiesBean properties;
         private boolean isHot;
+
+        protected DiscoverColumn(Parcel in) {
+            type = in.readInt();
+            id = in.readInt();
+            title = in.readString();
+            subtitle = in.readString();
+            coverPath = in.readString();
+            contentType = in.readString();
+            url = in.readString();
+            sharePic = in.readString();
+            enableShare = in.readByte() != 0;
+            isExternalUrl = in.readByte() != 0;
+            contentUpdatedAt = in.readInt();
+            isHot = in.readByte() != 0;
+        }
+
+        public static final Creator<DiscoverColumn> CREATOR = new Creator<DiscoverColumn>() {
+            @Override
+            public DiscoverColumn createFromParcel(Parcel in) {
+                return new DiscoverColumn(in);
+            }
+
+            @Override
+            public DiscoverColumn[] newArray(int size) {
+                return new DiscoverColumn[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -176,7 +238,28 @@ public class DiscoveryColumns {
             this.isHot = isHot;
         }
 
-        public static class PropertiesBean {
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(type);
+            dest.writeInt(id);
+            dest.writeString(title);
+            dest.writeString(subtitle);
+            dest.writeString(coverPath);
+            dest.writeString(contentType);
+            dest.writeString(url);
+            dest.writeString(sharePic);
+            dest.writeByte((byte) (enableShare ? 1 : 0));
+            dest.writeByte((byte) (isExternalUrl ? 1 : 0));
+            dest.writeInt(contentUpdatedAt);
+            dest.writeByte((byte) (isHot ? 1 : 0));
+        }
+
+        public static class PropertiesBean implements Parcelable{
             /**
              * albumId : 3985798
              * isPaid : false
@@ -184,6 +267,23 @@ public class DiscoveryColumns {
 
             private int albumId;
             private boolean isPaid;
+
+            protected PropertiesBean(Parcel in) {
+                albumId = in.readInt();
+                isPaid = in.readByte() != 0;
+            }
+
+            public static final Creator<PropertiesBean> CREATOR = new Creator<PropertiesBean>() {
+                @Override
+                public PropertiesBean createFromParcel(Parcel in) {
+                    return new PropertiesBean(in);
+                }
+
+                @Override
+                public PropertiesBean[] newArray(int size) {
+                    return new PropertiesBean[size];
+                }
+            };
 
             public int getAlbumId() {
                 return albumId;
@@ -199,6 +299,17 @@ public class DiscoveryColumns {
 
             public void setIsPaid(boolean isPaid) {
                 this.isPaid = isPaid;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeInt(albumId);
+                dest.writeByte((byte) (isPaid ? 1 : 0));
             }
         }
     }

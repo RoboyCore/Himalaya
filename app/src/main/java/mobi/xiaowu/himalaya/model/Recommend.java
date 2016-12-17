@@ -1,5 +1,8 @@
 package mobi.xiaowu.himalaya.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 import mobi.xiaowu.himalaya.model.recommend.DiscoveryColumns;
@@ -11,7 +14,7 @@ import mobi.xiaowu.himalaya.model.recommend.SpecialColumn;
  * Created by xiaowu on 2016/12/15.
  */
 
-public class Recommend {
+public class Recommend implements Parcelable{
 
 
     /**
@@ -29,6 +32,24 @@ public class Recommend {
     private FocusImages focusImages;
     private String msg;
     private SpecialColumn specialColumn;
+
+    protected Recommend(Parcel in) {
+        ret = in.readInt();
+        discoveryColumns = in.readParcelable(DiscoveryColumns.class.getClassLoader());
+        msg = in.readString();
+    }
+
+    public static final Creator<Recommend> CREATOR = new Creator<Recommend>() {
+        @Override
+        public Recommend createFromParcel(Parcel in) {
+            return new Recommend(in);
+        }
+
+        @Override
+        public Recommend[] newArray(int size) {
+            return new Recommend[size];
+        }
+    };
 
     public int getRet() {
         return ret;
@@ -78,4 +99,15 @@ public class Recommend {
         this.specialColumn = specialColumn;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(ret);
+        dest.writeParcelable(discoveryColumns, flags);
+        dest.writeString(msg);
+    }
 }

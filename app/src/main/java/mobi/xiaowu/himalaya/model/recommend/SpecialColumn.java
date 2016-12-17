@@ -63,7 +63,6 @@ public class SpecialColumn {
          * coverPath : http://fdfs.xmcdn.com/group24/M0A/C1/76/wKgJNVhRDH6jmKPaAABJiwtV6n0744_mobile_small.jpg
          * contentType : 2
          */
-        private int type;
         private int columnType;
         private int specialId;
         private String title;
@@ -72,13 +71,7 @@ public class SpecialColumn {
         private String coverPath;
         private String contentType;
 
-        public int getType() {
-            return type;
-        }
 
-        public void setType(int type) {
-            this.type = type;
-        }
 
         public int getColumnType() {
             return columnType;

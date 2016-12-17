@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tx.add(R.id.main_fragment_container, new DiscoverFragment());
         tx.commit();
         rg.setOnCheckedChangeListener(this);
-        rg.check(0);
+
+        rg.check(R.id.main_rb_01);
         boolean loadAds = getIntent().getBooleanExtra("loadAds", false);
         if (loadAds) {
             Intent intent = new Intent(this, WebViewActivity.class);

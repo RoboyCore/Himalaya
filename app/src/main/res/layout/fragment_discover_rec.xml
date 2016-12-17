@@ -4,7 +4,7 @@
                 android:layout_height="match_parent"
                 tools:context="mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <ScrollView
         android:id="@+id/discover_rec_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,6 +35,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/discover_rec_vp_2"
                     android:layout_width="match_parent"
+                    android:background="#fff"
                     android:layout_height="100dp"/>
 
                 <LinearLayout
@@ -57,7 +58,7 @@
                 android:layout_height="match_parent"/>
 
         </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

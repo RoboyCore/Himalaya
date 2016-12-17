@@ -35,11 +35,11 @@ public class ViewPagerDeadAdapter extends BaseViewPagerAdapter<ImageView> {
         position %=mItems.size();
         Log.d("TAG", "instantiateItem: " + position);
         ImageView view = mItems.get(position);
-//        ViewParent parent = view.getParent();
-//        if (parent != null) {
-//            ViewGroup parent1 = (ViewGroup) parent;
-//            parent1.removeView(view);
-//        }
+        ViewParent parent = view.getParent();
+        if (parent != null) {
+            ViewGroup parent1 = (ViewGroup) parent;
+            parent1.removeView(view);
+        }
         container.addView(view);
         return view;
     }

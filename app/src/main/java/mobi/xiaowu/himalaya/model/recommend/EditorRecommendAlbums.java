@@ -75,7 +75,6 @@ public class EditorRecommendAlbums {
          * commentsCount : 0
          * priceTypeId : 0
          */
-        private int type;
         private int id;
         private int albumId;
         private int uid;
@@ -98,13 +97,6 @@ public class EditorRecommendAlbums {
         private int commentsCount;
         private int priceTypeId;
 
-        public int getType() {
-            return type;
-        }
-
-        public void setType(int type) {
-            this.type = type;
-        }
 
         public int getId() {
             return id;

@@ -12,9 +12,12 @@ public class Type {
     //1.小编推荐
     //2.猜你喜欢
     //3.听系列
-
+    private String title;
     private List<SpecialColumn.Special> specials;//精品听单
     private List<EditorRecommendAlbums.EditorRec> editorRecs;//小编推荐
+
+
+
 
     public List<EditorRecommendAlbums.EditorRec> getEditorRecs() {
         return editorRecs;
@@ -38,5 +41,13 @@ public class Type {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

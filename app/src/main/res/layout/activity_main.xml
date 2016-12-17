@@ -16,10 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="@android:color/white"
         android:orientation="horizontal">
         <RadioButton
             android:id="@+id/main_rb_01"
             style="@style/main_rb_style"
+            android:checked="true"
             android:drawableTop="@drawable/main_rb4_selector"
             android:text="发现"/>
         <RadioButton
