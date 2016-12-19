@@ -4,24 +4,29 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import mobi.xiaowu.himalaya.ui.activity.WebViewActivity;
 import mobi.xiaowu.himalaya.ui.fragment.discover.DiscoverFragment;
 import mobi.xiaowu.himalaya.ui.fragment.downlisten.DownListenFragment;
 import mobi.xiaowu.himalaya.ui.fragment.my.MyFragment;
 import mobi.xiaowu.himalaya.ui.fragment.sublisten.SubListenFragment;
+import mobi.xiaowu.himalaya.widget.MyAlertDialog;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.main_rg)
     public RadioGroup rg;
     private FragmentManager fm;
     private long time;
+    private MyAlertDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +83,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
         Toast.makeText(this, "再按一下退出", Toast.LENGTH_SHORT).show();
         time = curr;
+        mDialog = new MyAlertDialog(this);
+        mDialog.setCanceledOnTouchOutside(true);
+        mDialog.show();
     }
+
+
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
        xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/rec_item_title_ll"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
               android:layout_marginTop="15dp"
-       tools:showIn="@layout/fragment_discover_rec_editor">
+       tools:showIn="@layout/item_discover_rec_editor">
 
     <ImageView
         android:id="@+id/rec_item_title_iv"

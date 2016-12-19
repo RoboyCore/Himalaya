@@ -21,7 +21,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.R;
-import mobi.xiaowu.himalaya.adapter.FragmentPagerAdapter;
+import mobi.xiaowu.himalaya.adapter.recommend.FragmentPagerAdapter;
 import mobi.xiaowu.himalaya.model.main.DiscoverTitle;
 import mobi.xiaowu.himalaya.ui.activity.SearchActivity;
 import mobi.xiaowu.himalaya.ui.fragment.BaseFragment;
@@ -29,7 +29,7 @@ import mobi.xiaowu.himalaya.ui.fragment.discover.anchor.DiscoverAnchorFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.broadcast.DiscoverBroadFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.hotlist.DiscoverListFragment;
 import mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment;
-import mobi.xiaowu.himalaya.ui.fragment.discover.sort.DiscoverSortFragment;
+import mobi.xiaowu.himalaya.ui.fragment.discover.classify.DiscoverClassifyFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,7 +88,7 @@ public class DiscoverFragment extends BaseFragment implements View.OnClickListen
         mFragmentList = new ArrayList<>();
 
         mFragmentList.add(new DiscoverRecFragment());
-        mFragmentList.add(new DiscoverSortFragment());
+        mFragmentList.add(new DiscoverClassifyFragment());
         mFragmentList.add(new DiscoverBroadFragment());
         mFragmentList.add(new DiscoverListFragment());
         mFragmentList.add(new DiscoverAnchorFragment());

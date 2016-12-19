@@ -35,25 +35,27 @@ public class ImgAsync extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected Bitmap doInBackground(String... strings) {
         url = strings[0];
-        int size = (int) Runtime.getRuntime().freeMemory() / 8;
-        System.out.println((int) Runtime.getRuntime().totalMemory());
-        System.out.println((int) Runtime.getRuntime().freeMemory());
-        try {
-            String path = Environment.getExternalStorageDirectory().getCanonicalPath();
-            mCacheUtils = new CacheUtils(size,path +"/sd/text");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitMap = mCacheUtils.getBitMap(url.substring(url.lastIndexOf("/")));
-        if (bitMap != null) {
-            System.out.println("bitMap = " );
-            return bitMap;
-        }
-        byte[] bytes = HttpUtils.UrlConnection(strings[0]);
-        if (bytes != null) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            mCacheUtils.put(url,bitmap,true);
-            return bitmap;
+        if (url.length() > 0) {
+            int size = (int) Runtime.getRuntime().freeMemory() / 8;
+            System.out.println((int) Runtime.getRuntime().totalMemory());
+            System.out.println((int) Runtime.getRuntime().freeMemory());
+            try {
+                String path = Environment.getExternalStorageDirectory().getCanonicalPath();
+                mCacheUtils = new CacheUtils(size, path + "/sd/text");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Bitmap bitMap = mCacheUtils.getBitMap(url.substring(url.lastIndexOf("/")));
+            if (bitMap != null) {
+                System.out.println("bitMap = ");
+                return bitMap;
+            }
+            byte[] bytes = HttpUtils.UrlConnection(strings[0]);
+            if (bytes != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                mCacheUtils.put(url, bitmap, true);
+                return bitmap;
+            }
         }
 
         return null;
@@ -62,7 +64,7 @@ public class ImgAsync extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmaps) {
         super.onPostExecute(bitmaps);
-        if (bitmaps != null  && url.equals(iv.getTag())) {
+        if (bitmaps != null && url.equals(iv.getTag())) {
 
             iv.setImageBitmap(bitmaps);
         } else {

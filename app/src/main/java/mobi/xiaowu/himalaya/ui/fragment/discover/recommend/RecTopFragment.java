@@ -2,7 +2,6 @@ package mobi.xiaowu.himalaya.ui.fragment.discover.recommend;
 
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import java.util.List;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.R;
-import mobi.xiaowu.himalaya.model.recommend.DiscoveryColumns;
+import mobi.xiaowu.himalaya.model.discovery.recommend.DiscoveryColumns;
 import mobi.xiaowu.himalaya.ui.fragment.BaseFragment;
 import mobi.xiaowu.himalaya.utils.ImgAsync;
 

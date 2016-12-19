@@ -66,10 +66,10 @@ public class WelcomeActivity extends AppCompatActivity implements JsonAsyncTask.
 
     private void loadData() {
         mExecutor = new ScheduledThreadPoolExecutor(2);
-        new JsonAsyncTask(this,this).executeOnExecutor(mExecutor,MainUrl.Ads);
+        new JsonAsyncTask(this,this).executeOnExecutor(mExecutor,MainUrl.ADS_MAIN);
 //        mImgAsync = new ImgAsync(iv);
 //        iv.setTag(mImgAsync.getUrl());
-//        mImgAsync.execute(MainUrl.Ads);
+//        mImgAsync.execute(MainUrl.ADS_MAIN);
         loadMainActivity();
     }
 

@@ -1,64 +1,76 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment">
-
-    <ScrollView
-        android:id="@+id/discover_rec_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/discover_rec_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <RelativeLayout
+            tools:context="mobi.xiaowu.himalaya.ui.fragment.discover.recommend.DiscoverRecFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/discover_rec_vp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/discover_rec_vp"
-                    android:layout_width="match_parent"
-                    android:layout_height="175dp"/>
+                android:layout_height="175dp"/>
 
-                <LinearLayout
-                    android:id="@+id/discover_rec_vp_dot"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/discover_rec_vp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"/>
-            </RelativeLayout>
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/discover_rec_vp_dot"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/discover_rec_vp_2"
-                    android:layout_width="match_parent"
-                    android:background="#fff"
-                    android:layout_height="100dp"/>
-
-                <LinearLayout
-                    android:id="@+id/discover_rec_vp_dot_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/discover_rec_vp_2"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"/>
-            </RelativeLayout>
-            <TextView
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/discover_rec_vp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/discover_rec_vp_2"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#cccccc"
-            />
-            <mobi.xiaowu.himalaya.widget.MyListView
-                android:id="@+id/discover_rec_lv"
+                android:layout_height="100dp"
+                android:background="#fff"/>
+
+            <LinearLayout
+                android:id="@+id/discover_rec_vp_dot_2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/discover_rec_vp_2"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#cccccc"
+        />
+        <mobi.xiaowu.himalaya.widget.MyListView
+            android:id="@+id/discover_rec_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <RelativeLayout
+            android:id="@+id/discover_rec_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/discover_rec_vp_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-        </LinearLayout>
-    </ScrollView>
+            <LinearLayout
+                android:id="@+id/discover_rec_vp_dot_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/discover_rec_vp_3"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"/>
+        </RelativeLayout>
 
+    </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>

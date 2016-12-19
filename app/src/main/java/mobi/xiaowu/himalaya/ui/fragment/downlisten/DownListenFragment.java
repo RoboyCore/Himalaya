@@ -16,7 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.R;
-import mobi.xiaowu.himalaya.adapter.FragmentPagerAdapter;
+import mobi.xiaowu.himalaya.adapter.recommend.FragmentPagerAdapter;
 import mobi.xiaowu.himalaya.ui.fragment.BaseFragment;
 
 /**

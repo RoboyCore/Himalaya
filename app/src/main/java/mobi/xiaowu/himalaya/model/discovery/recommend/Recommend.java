@@ -1,14 +1,7 @@
-package mobi.xiaowu.himalaya.model;
+package mobi.xiaowu.himalaya.model.discovery.recommend;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.util.List;
-
-import mobi.xiaowu.himalaya.model.recommend.DiscoveryColumns;
-import mobi.xiaowu.himalaya.model.recommend.EditorRecommendAlbums;
-import mobi.xiaowu.himalaya.model.recommend.FocusImages;
-import mobi.xiaowu.himalaya.model.recommend.SpecialColumn;
 
 /**
  * Created by xiaowu on 2016/12/15.

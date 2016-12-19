@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include layout="@layout/include_lv_title"/>
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="3"
+        app:rowCount="3">
+
+        <ImageView
+            android:id="@+id/anchor_item_iv1"
+            app:layout_columnWeight="1"
+            android:src="@mipmap/image_default_200"
+            style="@style/grid_layout_item"/>
+        <ImageView
+            android:id="@+id/anchor_item_iv2"
+            app:layout_columnWeight="1"
+            android:src="@mipmap/image_default_200"
+            style="@style/grid_layout_item"/>
+        <ImageView
+            android:id="@+id/anchor_item_iv3"
+            app:layout_columnWeight="1"
+            android:src="@mipmap/image_default_200"
+            style="@style/grid_layout_item"/>
+        <TextView
+            android:id="@+id/anchor_item_tv1"
+            style="@style/grid_layout_item"
+            app:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="标题"/>
+        <TextView
+            android:id="@+id/anchor_item_tv2"
+            style="@style/grid_layout_item"
+            app:layout_columnWeight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="标题"/>
+        <TextView
+            android:id="@+id/anchor_item_tv3"
+            style="@style/grid_layout_item"
+            app:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="标题"/>
+        <TextView
+            android:id="@+id/anchor_item_tv4"
+            style="@style/grid_layout_item.attention"
+            app:layout_columnWeight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="+ 关注"/>
+        <TextView
+            android:id="@+id/anchor_item_tv5"
+            style="@style/grid_layout_item.attention"
+            app:layout_columnWeight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="+ 关注"/>
+        <TextView
+            android:id="@+id/anchor_item_tv6"
+            style="@style/grid_layout_item.attention"
+            app:layout_columnWeight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="+ 关注"/>
+
+
+    </android.support.v7.widget.GridLayout>
+
+
+</LinearLayout>

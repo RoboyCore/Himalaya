@@ -1,9 +1,6 @@
-package mobi.xiaowu.himalaya.adapter;
+package mobi.xiaowu.himalaya.adapter.recommend;
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;

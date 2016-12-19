@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.adapter;
+package mobi.xiaowu.himalaya.adapter.recommend;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,22 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import mobi.xiaowu.himalaya.R;
-import mobi.xiaowu.himalaya.model.Recommend;
-import mobi.xiaowu.himalaya.model.recommend.EditorRecommendAlbums;
-import mobi.xiaowu.himalaya.model.recommend.SpecialColumn;
-import mobi.xiaowu.himalaya.model.recommend.Type;
+import mobi.xiaowu.himalaya.model.discovery.recommend.EditorRecommendAlbums;
+import mobi.xiaowu.himalaya.model.discovery.recommend.HotRecommends;
+import mobi.xiaowu.himalaya.model.discovery.recommend.SpecialColumn;
+import mobi.xiaowu.himalaya.model.discovery.recommend.Type;
 import mobi.xiaowu.himalaya.utils.ImgAsync;
 
 /**
@@ -70,7 +67,7 @@ public class ListViewMultAdapter extends BaseAdapter {
         switch (mList.get(position).getType()) {
             case 0://精品听单
                 if (convertView == null) {
-                    convertView = mInflater.inflate(R.layout.fragment_discover_rec_special,null);
+                    convertView = mInflater.inflate(R.layout.item_discover_rec_special,null);
                     convertView.setTag(new ViewHolderSpec(convertView));
                 }
                 ViewHolderSpec holderSpec = (ViewHolderSpec)convertView.getTag();
@@ -78,7 +75,7 @@ public class ListViewMultAdapter extends BaseAdapter {
                 break;
             case 1://小编推荐
                 if (convertView == null) {
-                    convertView = mInflater.inflate(R.layout.fragment_discover_rec_editor,null);
+                    convertView = mInflater.inflate(R.layout.item_discover_rec_editor,null);
                     convertView.setTag(new ViewHolderRec(convertView));
                 }
                 ViewHolderRec holderRec = (ViewHolderRec)convertView.getTag();
@@ -86,7 +83,13 @@ public class ListViewMultAdapter extends BaseAdapter {
                 break;
             case 2:
                 break;
-            case 3:
+            case 3://听系列
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.item_discover_rec_editor,null);
+                    convertView.setTag(new ViewHolderListen(convertView));
+                }
+                ViewHolderListen holderListen = (ViewHolderListen) convertView.getTag();
+                holderListen.bindData(mList.get(position),mContext);
                 break;
         }
         return convertView;
@@ -131,6 +134,7 @@ public class ListViewMultAdapter extends BaseAdapter {
             });
         }
     }
+    //精品听单
     public static class ViewHolderSpec {
         @BindViews({R.id.rec_item_title_tv, R.id.rec_item_more_tv, R.id.rec_item_content_tv, R.id.rec_item_content_tv2, R.id.rec_item_content_tv3,R.id.rec_item_content_tv4,R.id.rec_item_content_tv5,R.id.rec_item_content_tv6})
         public TextView[] tvs;
@@ -181,4 +185,44 @@ public class ListViewMultAdapter extends BaseAdapter {
             });
         }
     }
+    //听系列
+    public static class ViewHolderListen {
+        @BindViews({R.id.rec_item_title_tv, R.id.rec_item_more_tv, R.id.rec_item_content_tv, R.id.rec_item_content_tv2, R.id.rec_item_content_tv3, R.id.rec_item_tag_tv, R.id.rec_item_tag_tv2, R.id.rec_item_tag_tv3})
+        public TextView[] tvs;
+        @BindViews({R.id.rec_item_content_iv, R.id.rec_item_content_iv2, R.id.rec_item_content_iv3})
+        public ImageView[] ivs;
+
+
+        ViewHolderListen(View v) {
+            ButterKnife.bind(this, v);
+        }
+        void bindData(Type type, final Context context){
+            List<HotRecommends.Listen.ListenItem> list = type.getListen();
+            tvs[0].setText(type.getTitle());
+            tvs[2].setText(list.get(0).getTrackTitle());
+            tvs[3].setText(list.get(1).getTrackTitle());
+            tvs[4].setText(list.get(2).getTrackTitle());
+
+            tvs[5].setText(list.get(0).getTitle());
+            tvs[6].setText(list.get(1).getTitle());
+            tvs[7].setText(list.get(2).getTitle());
+            for (int i = 0; i < list.size(); i++) {
+                ivs[i].setTag(list.get(i).getCoverMiddle());
+                new ImgAsync(ivs[i]).execute(list.get(i).getCoverMiddle());
+                ivs[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "当前" , Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            tvs[1].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.model.recommend;
+package mobi.xiaowu.himalaya.model.discovery.recommend;
 
 import java.util.List;
 

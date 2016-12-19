@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.adapter;
+package mobi.xiaowu.himalaya.adapter.recommend;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

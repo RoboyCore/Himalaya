@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.model.recommend;
+package mobi.xiaowu.himalaya.model.discovery.recommend;
 
 import java.util.List;
 
@@ -15,9 +15,15 @@ public class Type {
     private String title;
     private List<SpecialColumn.Special> specials;//精品听单
     private List<EditorRecommendAlbums.EditorRec> editorRecs;//小编推荐
+    private List<HotRecommends.Listen.ListenItem> listen;//听系列
 
+    public List<HotRecommends.Listen.ListenItem> getListen() {
+        return listen;
+    }
 
-
+    public void setListen(List<HotRecommends.Listen.ListenItem> listen) {
+        this.listen = listen;
+    }
 
     public List<EditorRecommendAlbums.EditorRec> getEditorRecs() {
         return editorRecs;

@@ -1,4 +1,4 @@
-package mobi.xiaowu.himalaya.adapter;
+package mobi.xiaowu.himalaya.adapter.recommend;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
