@@ -65,7 +65,6 @@ public class ImgAsync extends AsyncTask<String, Integer, Bitmap> {
     protected void onPostExecute(Bitmap bitmaps) {
         super.onPostExecute(bitmaps);
         if (bitmaps != null && url.equals(iv.getTag())) {
-
             iv.setImageBitmap(bitmaps);
         } else {
             Log.d("TAG", "图片加载失败");
