@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     @Override
     public void onBackPressed() {
-        long curr = System.currentTimeMillis();
-        if (curr - time < 3000) {
-            super.onBackPressed();
-        }
-        Toast.makeText(this, "再按一下退出", Toast.LENGTH_SHORT).show();
-        time = curr;
+//        long curr = System.currentTimeMillis();
+//        if (curr - time < 3000) {
+//            super.onBackPressed();
+//        }
+//        Toast.makeText(this, "再按一下退出", Toast.LENGTH_SHORT).show();
+//        time = curr;
         mDialog = new MyAlertDialog(this);
         mDialog.setCanceledOnTouchOutside(true);
         mDialog.show();

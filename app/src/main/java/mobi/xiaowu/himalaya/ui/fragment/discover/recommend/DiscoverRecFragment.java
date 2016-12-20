@@ -61,12 +61,11 @@ public class DiscoverRecFragment extends BaseFragment implements ViewPager.OnPag
     public LinearLayout dotLl2;
 
     //底部
-    @BindView(R.id.discover_rec_vp_3)
+//    @BindView(R.id.discover_rec_vp_3)
     public ViewPager vpBottom;
-    @BindView(R.id.discover_rec_vp_dot_3)
+//    @BindView(R.id.discover_rec_vp_dot_3)
     public LinearLayout dotLlBottom;
-    @BindView(R.id.discover_rec_bottom)
-    public RelativeLayout rl;
+
 
     @BindView(R.id.discover_rec_lv)
     public ListView lv;
@@ -207,7 +206,10 @@ public class DiscoverRecFragment extends BaseFragment implements ViewPager.OnPag
     private void initLVList() {
         mList = new ArrayList<>();
         adapter = new ListViewMultAdapter(getContext(), mList);
-//        lv.addFooterView(rl);
+        View bottom = View.inflate(getContext(), R.layout.item_rec_bottom, null);
+         vpBottom = (ViewPager) bottom.findViewById(R.id.discover_rec_vp_3);
+        dotLlBottom = (LinearLayout) bottom.findViewById(R.id.discover_rec_vp_dot_3);
+        lv.addFooterView(bottom);
         lv.setAdapter(adapter);
     }
 
@@ -389,6 +391,8 @@ public class DiscoverRecFragment extends BaseFragment implements ViewPager.OnPag
                 try {
                     BottomAds bottomAds = new Gson().fromJson(new String(json, "utf-8"), BottomAds.class);
                     Vpager(bottomAds);
+                    adapter.notifyDataSetChanged();
+//                    lv.addFooterView();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,7 @@
 package mobi.xiaowu.himalaya.adapter.recommend;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import mobi.xiaowu.himalaya.model.discovery.recommend.EditorRecommendAlbums;
 import mobi.xiaowu.himalaya.model.discovery.recommend.HotRecommends;
 import mobi.xiaowu.himalaya.model.discovery.recommend.SpecialColumn;
 import mobi.xiaowu.himalaya.model.discovery.recommend.Type;
+import mobi.xiaowu.himalaya.ui.activity.Recommend.AlbumDetailActivity;
 import mobi.xiaowu.himalaya.utils.ImgAsync;
 
 /**
@@ -109,31 +111,33 @@ public class ListViewMultAdapter extends BaseAdapter {
 
         void bindData(Type type, final Context context) {
             List<EditorRecommendAlbums.EditorRec> list = type.getEditorRecs();
-            tvs[0].setText(type.getTitle());
-            tvs[2].setText(list.get(0).getTrackTitle());
-            tvs[3].setText(list.get(1).getTrackTitle());
-            tvs[4].setText(list.get(2).getTrackTitle());
+            if (list.size() > 0) {
+                tvs[0].setText(type.getTitle());
+                tvs[2].setText(list.get(0).getTrackTitle());
+                tvs[3].setText(list.get(1).getTrackTitle());
+                tvs[4].setText(list.get(2).getTrackTitle());
 
-            tvs[5].setText(list.get(0).getTitle());
-            tvs[6].setText(list.get(1).getTitle());
-            tvs[7].setText(list.get(2).getTitle());
+                tvs[5].setText(list.get(0).getTitle());
+                tvs[6].setText(list.get(1).getTitle());
+                tvs[7].setText(list.get(2).getTitle());
 
-            for (int i = 0; i < list.size(); i++) {
-                ivs[i].setTag(list.get(i).getCoverMiddle());
-                new ImgAsync(ivs[i]).execute(list.get(i).getCoverMiddle());
-                ivs[i].setOnClickListener(new View.OnClickListener() {
+                for (int i = 0; i < list.size(); i++) {
+                    ivs[i].setTag(list.get(i).getCoverMiddle());
+                    new ImgAsync(ivs[i]).execute(list.get(i).getCoverMiddle());
+                    ivs[i].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "当前", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                tvs[1].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "当前", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "更多", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-            tvs[1].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "更多", Toast.LENGTH_SHORT).show();
-                }
-            });
         }
     }
 
@@ -209,7 +213,7 @@ public class ListViewMultAdapter extends BaseAdapter {
             ButterKnife.bind(this, v);
         }
 
-        void bindData(Type type, final Context context) {
+        void bindData(final Type type, final Context context) {
             List<HotRecommends.Listen.ListenItem> list = type.getListen();
             tvs[0].setText(type.getTitle());
             tvs[2].setText(list.get(0).getTrackTitle());
@@ -222,10 +226,14 @@ public class ListViewMultAdapter extends BaseAdapter {
             for (int i = 0; i < list.size(); i++) {
                 ivs[i].setTag(list.get(i).getCoverMiddle());
                 new ImgAsync(ivs[i]).execute(list.get(i).getCoverMiddle());
+                final int finalI = i;
                 ivs[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context, "当前", Toast.LENGTH_SHORT).show();
+                        int albumId = type.getListen().get(finalI).getAlbumId();
+                        Intent intent = new Intent(context, AlbumDetailActivity.class);
+                        intent.putExtra("albumId", albumId);
+                        context.startActivity(intent);
                     }
                 });
             }
